@@ -1,0 +1,21 @@
+name: Set up cargo-bundle-licenses
+description: Install cargo-bundle-licenses into the $PATH
+
+inputs:
+  version:
+    description: 'cargo-bundle-licenses version to install.'
+    required: false
+    default: '1.3.0'
+  platform:
+    description: 'Download executables for the given platform.'
+    required: false
+    default: linux-amd64
+
+runs:
+  using: "composite"
+  steps:
+  - name: Install cargo-bundle-licenses
+    run: |
+      curl -sSL "https://github.com/sstadick/cargo-bundle-licenses/releases/download/v${{ inputs.version }}/cargo-bundle-licenses-${{ inputs.platform }}" -o "$HOME/.cargo/bin/cargo-bundle-licenses"
+      chmod a+x "$HOME/.cargo/bin/cargo-bundle-licenses"
+    shell: bash

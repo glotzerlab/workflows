@@ -48,3 +48,19 @@ See [setup-mdbook/action.yaml] for all options.
 [mdbook]: https://rust-lang.github.io/mdBook/
 [mdbook-linkcheck]: https://github.com/Michael-F-Bryan/mdbook-linkcheck
 [setup-mdbook/action.yaml]: setup-mdbook/action.yaml
+
+## setup-cargo-bundle-licenses
+
+`setup-cargo-bundle-licenses` installs [cargo-bundle-licenses].
+
+In your action workflow:
+```yaml
+steps:
+- name: Set up mdbook
+  uses: glotzerlab/workflows/setup-cargo-bundle-licenses@<insert hash of tagged version here> # v0.1.0
+```
+
+See [setup-cargo-bundle-licenses/action.yaml] for all options.
+
+[cargo-bundle-licenses]: https://github.com/sstadick/cargo-bundle-licenses
+[setup-cargo-bundle-licenses/action.yaml]: setup-cargo-bundle-licenses/action.yaml

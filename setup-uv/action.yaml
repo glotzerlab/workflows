@@ -1,4 +1,4 @@
-name: Setup uv
+name: Set up uv
 description: Install uv and synchronize the environment with a given lock file.
 
 inputs:

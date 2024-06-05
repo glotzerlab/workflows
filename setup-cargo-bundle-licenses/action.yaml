@@ -1,5 +1,5 @@
 name: Set up cargo-bundle-licenses
-description: Install cargo-bundle-licesnes into the $PATH
+description: Install cargo-bundle-licenses into the $PATH
 
 inputs:
   version:

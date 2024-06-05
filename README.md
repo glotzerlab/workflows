@@ -24,9 +24,27 @@ steps:
   with:
     python-version: "3.12"
 - name: Set up Python environment
-  uses: glotzerlab/workflows/setup-python@<insert hash of tagged version here> # v0.1.0
+  uses: glotzerlab/workflows/setup-uv@<insert hash of tagged version here> # v0.1.0
   with:
     lockfile: "requirements.txt"
 ```
 
 [uv]: https://github.com/astral-sh/uv
+
+## setup-mdbook
+
+`setup-mdbook` installs [mdbook] and *optionally* installs mdbook plugins:
+* [mdbook-linkcheck]
+
+In your action workflow:
+```yaml
+steps:
+- name: Set up mdbook
+  uses: glotzerlab/workflows/setup-mdbook@<insert hash of tagged version here> # v0.1.0
+```
+
+See [setup-mdbook/action.yaml] for all options.
+
+[mdbook]: https://rust-lang.github.io/mdBook/
+[mdbook-linkcheck]: https://github.com/Michael-F-Bryan/mdbook-linkcheck
+[setup-mdbook/action.yaml]: setup-mdbook/action.yaml

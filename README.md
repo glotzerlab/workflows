@@ -64,3 +64,21 @@ See [setup-cargo-bundle-licenses/action.yaml] for all options.
 
 [cargo-bundle-licenses]: https://github.com/sstadick/cargo-bundle-licenses
 [setup-cargo-bundle-licenses/action.yaml]: setup-cargo-bundle-licenses/action.yaml
+
+## stale
+
+To reuse the standard stale workflow, create a workflow `stale.yaml` with the
+contents:
+```yaml
+name: Close stale issues and PRs
+
+on:
+  schedule:
+    - cron: '0 19 * * *'
+
+  workflow_dispatch:
+
+jobs:
+  stale:
+    uses: glotzerlab/workflows/.github/workflows/stale.yaml@<insert hash of tagged version here> # v0.1.0
+```

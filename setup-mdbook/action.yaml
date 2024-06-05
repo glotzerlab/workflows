@@ -18,7 +18,7 @@ inputs:
     description: 'Download executables for the given platform.'
     required: false
     default: x86_64-unknown-linux-gnu
-  
+
 runs:
   using: "composite"
   steps:
@@ -28,9 +28,8 @@ runs:
       curl -sSL "https://github.com/rust-lang/mdBook/releases/download/v${{ inputs.mdbook_version }}/mdbook-v${{ inputs.mdbook_version }}-${{ inputs.platform }}.tar.gz" | tar -xvz --directory "$HOME/.cargo/bin"
     shell: bash
   - name: Install mdbook-linkcheck
-    if: ${{ inputs.linkcheck == 'true' }}
     run: |
-      curl -sSL "https://github.com/Michael-F-Bryan/mdbook-linkcheck/releases/download/v${{ inputs.linkcheck_version }}/mdbook-linkcheck.#{{ inputs.platform }}.zip" -o mdbook-linkcheck.zip
+      curl -sSL "https://github.com/Michael-F-Bryan/mdbook-linkcheck/releases/download/v${{ inputs.linkcheck_version }}/mdbook-linkcheck.${{ inputs.platform }}.zip" -o mdbook-linkcheck.zip
       unzip mdbook-linkcheck.zip -d "$HOME/.cargo/bin"
       chmod a+x "$HOME/.cargo/bin/mdbook-linkcheck"
     shell: bash

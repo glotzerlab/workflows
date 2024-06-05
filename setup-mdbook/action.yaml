@@ -1,0 +1,36 @@
+name: Setup mdbook
+description: Install mdbook and optional mdbook plugins.
+
+inputs:
+  mdbook_version:
+    description: 'mdbook version to install.'
+    required: false
+    default: '0.4.40'
+  linkcheck:
+    description: 'Whether to install mdbook-linkcheck.'
+    required: false
+    default: 'true'
+  linkcheck_version:
+    description: 'mdbook-linkcheck version to install.'
+    required: false
+    default: '0.7.7'
+  platform:
+    description: 'Download executables for the given platform.'
+    required: false
+    default: x86_64-unknown-linux-gnu
+  
+runs:
+  using: "composite"
+  steps:
+  - name: Install mdbook
+    run: |
+      mkdir -p "$HOME/.cargo/bin"
+      curl -sSL "https://github.com/rust-lang/mdBook/releases/download/v${{ inputs.mdbook_version }}/mdbook-v${{ inputs.mdbook_version }}-${{ inputs.platform }}.tar.gz" | tar -xvz --directory "$HOME/.cargo/bin"
+    shell: bash
+  - name: Install mdbook-linkcheck
+    if: ${{ inputs.linkcheck == 'true' }}
+    run: |
+      curl -sSL "https://github.com/Michael-F-Bryan/mdbook-linkcheck/releases/download/v${{ inputs.linkcheck_version }}/mdbook-linkcheck.#{{ inputs.platform }}.zip" -o mdbook-linkcheck.zip
+      unzip mdbook-linkcheck.zip -d "$HOME/.cargo/bin"
+      chmod a+x "$HOME/.cargo/bin/mdbook-linkcheck"
+    shell: bash

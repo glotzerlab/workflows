@@ -17,8 +17,10 @@ and add both `requirements.in` and `requirements.txt` to the git repository.
 In your action workflow, create a Python environment and then call setup-uv:
 ```yaml
 steps:
-- uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
-- uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # v5.1.0
+- name: Checkout
+  uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+- name: Set up Python
+  uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # v5.1.0
   with:
     python-version: "3.12"
 - name: Set up Python environment

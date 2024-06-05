@@ -21,7 +21,8 @@ steps:
 - uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # v5.1.0
   with:
     python-version: "3.12"
-- uses: glotzerlab/workflows/setup-python@<insert hash of tagged version here> # v0.1.0
+- name: Set up Python environment
+  uses: glotzerlab/workflows/setup-python@<insert hash of tagged version here> # v0.1.0
   with:
     lockfile: "requirements.txt"
 ```

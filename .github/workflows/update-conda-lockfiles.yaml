@@ -25,11 +25,11 @@ jobs:
         path: code
         ref: ${{ inputs.branch }}
 
-    - uses: tibdex/github-app-token@3beb63f4bd073e61482598c45c71c1019b59b73a # v2.1.0
+    - uses: actions/create-github-app-token@c8f55efbd427e7465d6da1106e7979bc8aaee856 # v1.10.1
       id: generate-token
       with:
-        app_id: ${{ secrets.PR_SUBMITTER_APP_ID }}
-        private_key: ${{ secrets.PR_SUBMITTER_PRIVATE_KEY }}
+        app-id: ${{ secrets.PR_SUBMITTER_APP_ID }}
+        private-key: ${{ secrets.PR_SUBMITTER_PRIVATE_KEY }}
 
     - name: Create python environment
       uses: mamba-org/setup-micromamba@f8b8a1e23a26f60a44c853292711bacfd3eac822 # v1.9.0

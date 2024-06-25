@@ -25,6 +25,12 @@ jobs:
         path: code
         ref: ${{ inputs.branch }}
 
+    - uses: tibdex/github-app-token@3beb63f4bd073e61482598c45c71c1019b59b73a # v2.1.0
+      id: generate-token
+      with:
+        app_id: ${{ secrets.PR_SUBMITTER_APP_ID }}
+        private_key: ${{ secrets.PR_SUBMITTER_PRIVATE_KEY }}
+
     - name: Create python environment
       uses: mamba-org/setup-micromamba@f8b8a1e23a26f60a44c853292711bacfd3eac822 # v1.9.0
       with:
@@ -53,3 +59,4 @@ jobs:
         delete-branch: true
         title: Update conda lockfiles on ${{ inputs.branch }}
         body: Automated changes by `${{ inputs.command }}`.
+        token: ${{ steps.generate-token.outputs.token }}

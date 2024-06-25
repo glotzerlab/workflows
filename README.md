@@ -24,7 +24,7 @@ steps:
   with:
     python-version: "3.12"
 - name: Set up Python environment
-  uses: glotzerlab/workflows/setup-uv@5cfac9da9cb78e16ae97a9119b6fd13c1c2d6f5e # 0.1.0
+  uses: glotzerlab/workflows/setup-uv@ea2e25d07af862a1c696a932c2bd6b242d142049 # 0.2.0
   with:
     lockfile: "requirements.txt"
 ```
@@ -40,7 +40,7 @@ In your action workflow:
 ```yaml
 steps:
 - name: Set up mdbook
-  uses: glotzerlab/workflows/setup-mdbook@5cfac9da9cb78e16ae97a9119b6fd13c1c2d6f5e # 0.1.0
+  uses: glotzerlab/workflows/setup-mdbook@ea2e25d07af862a1c696a932c2bd6b242d142049 # 0.2.0
 ```
 
 See [setup-mdbook/action.yaml] for all options.
@@ -57,7 +57,7 @@ In your action workflow:
 ```yaml
 steps:
 - name: Set up mdbook
-  uses: glotzerlab/workflows/setup-cargo-bundle-licenses@5cfac9da9cb78e16ae97a9119b6fd13c1c2d6f5e # 0.1.0
+  uses: glotzerlab/workflows/setup-cargo-bundle-licenses@ea2e25d07af862a1c696a932c2bd6b242d142049 # 0.2.0
 ```
 
 See [setup-cargo-bundle-licenses/action.yaml] for all options.
@@ -80,7 +80,7 @@ on:
 
 jobs:
   stale:
-    uses: glotzerlab/workflows/.github/workflows/stale.yaml@5cfac9da9cb78e16ae97a9119b6fd13c1c2d6f5e # 0.1.0
+    uses: glotzerlab/workflows/.github/workflows/stale.yaml@ea2e25d07af862a1c696a932c2bd6b242d142049 # 0.2.0
 ```
 
 ## update-conda-lockfiles
@@ -103,7 +103,7 @@ To automatically update conda lock files monthly:
 
   jobs:
     update:
-      uses: glotzerlab/workflows/.github/workflows/update-conda-lockfiles.yaml@TODO # 0.1.0
+      uses: glotzerlab/workflows/.github/workflows/update-conda-lockfiles.yaml@ea2e25d07af862a1c696a932c2bd6b242d142049 # 0.2.0
       secrets: inherit
       with:
         branch: trunk-minor

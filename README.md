@@ -82,3 +82,30 @@ jobs:
   stale:
     uses: glotzerlab/workflows/.github/workflows/stale.yaml@5cfac9da9cb78e16ae97a9119b6fd13c1c2d6f5e # 0.1.0
 ```
+
+## update-conda-lockfiles
+
+To automatically update conda lock files monthly:
+1. Prepare a directory with the base `environment.yaml` and a script that updates all
+  lock files (see https://github.com/glotzerlab/hoomd-blue/tree/trunk-minor/.github/workflows/environments
+  for an example).
+2. Ask an organization admin to install the pull request submitter bot.
+3. Create a workflow `update-conda-lockfiles.yaml` with the contents:
+
+  ```yaml
+  name: Update conda lockfiles.
+
+  on:
+    schedule:
+      - cron: '0 12 1 * *'
+
+    workflow_dispatch:
+
+  jobs:
+    update:
+      uses: glotzerlab/workflows/.github/workflows/update-conda-lockfiles.yaml@TODO # 0.1.0
+      secrets: inherit
+      with:
+        branch: trunk-minor
+  ```
+

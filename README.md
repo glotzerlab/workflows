@@ -86,7 +86,7 @@ jobs:
 ## update-conda-lockfiles
 
 To automatically update conda lock files monthly:
-1. Prepare a directory with the base `envrionment.yaml` and a script that updates all
+1. Prepare a directory with the base `environment.yaml` and a script that updates all
   lock files (see https://github.com/glotzerlab/hoomd-blue/tree/trunk-minor/.github/workflows/environments
   for an example).
 2. Ask an organization admin to install the pull request submitter bot.
@@ -108,4 +108,4 @@ To automatically update conda lock files monthly:
       with:
         branch: trunk-minor
   ```
-      
+

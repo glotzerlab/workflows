@@ -93,7 +93,7 @@ To automatically update conda lock files monthly:
 3. Create a workflow `update-conda-lockfiles.yaml` with the contents:
 
   ```yaml
-  name: Update conda lockfiles.
+  name: Update conda lockfiles
 
   on:
     schedule:

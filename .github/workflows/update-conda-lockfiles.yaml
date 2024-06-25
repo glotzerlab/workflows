@@ -1,0 +1,55 @@
+name: Update conda lockfiles
+
+on:
+  workflow_call:
+    inputs:
+      branch:
+        required: true
+        type: string
+      command:
+        default: ./update-lockfiles.sh
+        required: false
+        type: string
+      path:
+        default: .github/workflows/environments
+        required: false
+        type: string
+
+jobs:
+  update:
+    runs-on: ubuntu-24.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+      with:
+        path: code
+        ref: ${{ inputs.branch }}
+
+    - name: Create python environment
+      uses: mamba-org/setup-micromamba@f8b8a1e23a26f60a44c853292711bacfd3eac822 # v1.9.0
+      with:
+        micromamba-version: '1.5.8-0'
+        environment-name: update
+        create-args: >-
+          python=3.12
+          conda-lock
+        micromamba-root-path: ${{ github.workspace }}/micromamba
+
+    - name: Configure conda environment variables
+      run: |
+        echo "$MAMBA_ROOT_PREFIX/envs/update/bin" >> $GITHUB_PATH
+
+    - name: Update lockfiles
+      run: ${{ inputs.command }}
+      working-directory: code/${{ inputs.path }}
+
+    - name: Create pull request
+      uses: peter-evans/create-pull-request@c5a7806660adbe173f04e3e038b0ccdcd758773c # v6.1.0
+      with:
+        base: ${{ inputs.branch }}
+        path: code
+        commit-message: "Update conda lockfiles"
+        branch: update-conda-lock-files
+        delete-branch: true
+        title: Update conda lockfiles on ${{ inputs.branch }}
+        body: Automated changes by `${{ inputs.command }}`.

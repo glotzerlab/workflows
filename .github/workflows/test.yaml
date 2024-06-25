@@ -78,6 +78,13 @@ jobs:
       uses: ./setup-cargo-bundle-licenses
     - run: cargo bundle-licenses --version
 
+  update_conda_lockfiles:
+    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.ref != 'update-conda-lockfiles' }}
+    uses: ./.github/workflows/update-conda-lockfiles.yaml
+    with:
+      branch: ${{ github.event.pull_request.head.ref }}
+      path: test/update-conda-lockfile
+
   tests_complete:
     name: All tests
     if: always()
@@ -87,6 +94,7 @@ jobs:
     - setup_uv_lockfile
     - setup_mdbook
     - setup_cargo_bundle_licenses
+    - update_conda_lockfiles
     runs-on: ubuntu-latest
 
     steps:

@@ -95,7 +95,6 @@ jobs:
     - setup_uv_lockfile
     - setup_mdbook
     - setup_cargo_bundle_licenses
-    - update_conda_lockfiles
     runs-on: ubuntu-latest
 
     steps:

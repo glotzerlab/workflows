@@ -106,6 +106,6 @@ To automatically update conda lock files monthly:
       uses: glotzerlab/workflows/.github/workflows/update-conda-lockfiles.yaml@ea2e25d07af862a1c696a932c2bd6b242d142049 # 0.2.0
       secrets: inherit
       with:
-        branch: trunk-minor
+        branch: <name of default branch>
   ```
 

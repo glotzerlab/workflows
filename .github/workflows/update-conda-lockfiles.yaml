@@ -55,7 +55,7 @@ jobs:
         base: ${{ inputs.branch }}
         path: code
         commit-message: "Update conda lockfiles"
-        branch: update-conda-lock-files
+        branch: update-conda-lockfiles
         delete-branch: true
         title: Update conda lockfiles on ${{ inputs.branch }}
         body: Automated changes by `${{ inputs.command }}`.

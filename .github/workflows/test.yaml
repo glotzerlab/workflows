@@ -41,7 +41,7 @@ jobs:
     - run: uv --version
 
   setup_uv_lockfile:
-    name: setup-uv [lockfile]
+    name: setup-uv [lockfile-onlybinary-true]
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -53,6 +53,24 @@ jobs:
     - name: Set up Python environment
       uses: ./setup-uv
       with:
+        lockfile: .github/workflows/lockfile.txt
+    - run: uv --version
+    - run: python -m build --version
+
+  setup_uv_lockfile_binaries:
+    name: setup-uv [lockfile-onlybinary-false]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+    - name: Set up Python
+      uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # v5.1.0
+      with:
+        python-version: "3.12"
+    - name: Set up Python environment
+      uses: ./setup-uv
+      with:
+        onlybinary: false
         lockfile: .github/workflows/lockfile.txt
     - run: uv --version
     - run: python -m build --version

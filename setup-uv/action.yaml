@@ -13,7 +13,7 @@ inputs:
   onlybinary:
     description: 'Allow building dependencies from source.'
     required: false
-    default: 'false'
+    default: 'true'
 
 runs:
   using: "composite"

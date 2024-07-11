@@ -10,6 +10,10 @@ inputs:
     description: 'Packages to install.'
     required: false
     default: ''
+  only-binary:
+    description: 'Value to pass to the --only-binary option.'
+    required: false
+    default: ':all:'
 
 runs:
   using: "composite"
@@ -20,5 +24,5 @@ runs:
 
   - name: Install
     if: ${{ inputs.lockfile != '' }}
-    run: "uv pip sync ${{ inputs.lockfile }} --only-binary :all: --system --reinstall"
+    run: "uv pip sync ${{ inputs.lockfile }} --only-binary=${{ inputs.only-binary }} --system --reinstall"
     shell: bash

@@ -113,6 +113,7 @@ jobs:
     - name: Set up row
       uses: ./setup-row
     - run: row --version
+    - run: row --help
 
   tests_complete:
     name: All tests

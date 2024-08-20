@@ -17,5 +17,5 @@ runs:
   - name: Install row
     run: |
       mkdir -p "$HOME/.cargo/bin"
-      curl -sSL "https://github.com/glotzerlab/row/releases/download/{{ inputs.version }}/row-${{ inputs.version }}-${{ inputs.platform }}.tar.gz" | tar -xvz --directory "$HOME/.cargo/bin"
+      curl -sSL "https://github.com/glotzerlab/row/releases/download/${{ inputs.version }}/row-${{ inputs.version }}-${{ inputs.platform }}.tar.gz" | tar -xvz --directory "$HOME/.cargo/bin"
     shell: bash

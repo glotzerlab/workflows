@@ -1,0 +1,21 @@
+name: Set up row
+description: Install row.
+
+inputs:
+  version:
+    description: 'row version to install.'
+    required: false
+    default: '0.2.0'
+  platform:
+    description: 'Download executables for the given platform.'
+    required: false
+    default: x86_64-unknown-linux-gnu
+
+runs:
+  using: "composite"
+  steps:
+  - name: Install row
+    run: |
+      mkdir -p "$HOME/.cargo/bin"
+      curl -sSL "https://github.com/glotzerlab/row/releases/download/{{ inputs.version }}/row-${{ inputs.version }}-${{ inputs.platform }}.tar.gz" | tar -xvz --directory "$HOME/.cargo/bin"
+    shell: bash

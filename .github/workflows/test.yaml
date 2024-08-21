@@ -97,12 +97,23 @@ jobs:
     - run: cargo bundle-licenses --version
 
   update_conda_lockfiles:
-    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.ref != 'update-conda-lockfiles' }}
+    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.ref != 'update-conda-lockfiles' && contains(github.event.pull_request.labels.*.name, 'test-conda-lockfiles') }}
     uses: ./.github/workflows/update-conda-lockfiles.yaml
     secrets: inherit
     with:
       branch: ${{ github.event.pull_request.head.ref }}
       path: test/update-conda-lockfile
+
+  setup_row:
+    name: setup-row [default]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+    - name: Set up row
+      uses: ./setup-row
+    - run: row --version
+    - run: row --help
 
   tests_complete:
     name: All tests
@@ -114,6 +125,7 @@ jobs:
     - setup_uv_lockfile_only_binary_none
     - setup_mdbook
     - setup_cargo_bundle_licenses
+    - setup_row
     runs-on: ubuntu-latest
 
     steps:

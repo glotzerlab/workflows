@@ -24,7 +24,7 @@ steps:
   with:
     python-version: "3.12"
 - name: Set up Python environment
-  uses: glotzerlab/workflows/setup-uv@ea2e25d07af862a1c696a932c2bd6b242d142049 # 0.2.0
+  uses: glotzerlab/workflows/setup-uv@ae7e7c6931098a313ef8069ef04b88a55c3a40f6 # 0.3.0
   with:
     lockfile: "requirements.txt"
 ```
@@ -40,7 +40,7 @@ In your action workflow:
 ```yaml
 steps:
 - name: Set up mdbook
-  uses: glotzerlab/workflows/setup-mdbook@ea2e25d07af862a1c696a932c2bd6b242d142049 # 0.2.0
+  uses: glotzerlab/workflows/setup-mdbook@ae7e7c6931098a313ef8069ef04b88a55c3a40f6 # 0.3.0
 ```
 
 See [setup-mdbook/action.yaml] for all options.
@@ -57,13 +57,29 @@ In your action workflow:
 ```yaml
 steps:
 - name: Set up mdbook
-  uses: glotzerlab/workflows/setup-cargo-bundle-licenses@ea2e25d07af862a1c696a932c2bd6b242d142049 # 0.2.0
+  uses: glotzerlab/workflows/setup-cargo-bundle-licenses@ae7e7c6931098a313ef8069ef04b88a55c3a40f6 # 0.3.0
 ```
 
 See [setup-cargo-bundle-licenses/action.yaml] for all options.
 
 [cargo-bundle-licenses]: https://github.com/sstadick/cargo-bundle-licenses
 [setup-cargo-bundle-licenses/action.yaml]: setup-cargo-bundle-licenses/action.yaml
+
+## setup-row
+
+`setup-row` installs [row].
+
+In your action workflow:
+```yaml
+steps:
+- name: Set up row
+  uses: glotzerlab/workflows/setup-row@ae7e7c6931098a313ef8069ef04b88a55c3a40f6 # 0.3.0
+```
+
+See [setup-row/action.yaml] for all options.
+
+[row]: https://row.readthedocs.org
+[setup-row/action.yaml]: setup-row/action.yaml
 
 ## stale
 
@@ -80,7 +96,7 @@ on:
 
 jobs:
   stale:
-    uses: glotzerlab/workflows/.github/workflows/stale.yaml@ea2e25d07af862a1c696a932c2bd6b242d142049 # 0.2.0
+    uses: glotzerlab/workflows/.github/workflows/stale.yaml@ae7e7c6931098a313ef8069ef04b88a55c3a40f6 # 0.3.0
 ```
 
 ## update-conda-lockfiles
@@ -103,7 +119,7 @@ To automatically update conda lock files monthly:
 
   jobs:
     update:
-      uses: glotzerlab/workflows/.github/workflows/update-conda-lockfiles.yaml@ea2e25d07af862a1c696a932c2bd6b242d142049 # 0.2.0
+      uses: glotzerlab/workflows/.github/workflows/update-conda-lockfiles.yaml@ae7e7c6931098a313ef8069ef04b88a55c3a40f6 # 0.3.0
       secrets: inherit
       with:
         branch: <name of default branch>

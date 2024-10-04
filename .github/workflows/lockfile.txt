@@ -2,7 +2,7 @@
 #    uv pip compile --python-version 3.12 --python-platform linux lockfile.in
 build==1.1.1
     # via -r lockfile.in
-packaging==24.0
+packaging==24.1
     # via build
-pyproject-hooks==1.1.0
+pyproject-hooks==1.2.0
     # via build

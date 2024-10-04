@@ -84,7 +84,6 @@ jobs:
     - name: Set up mdbook
       uses: ./setup-mdbook
     - run: mdbook --version
-    - run: mdbook-linkcheck --version
 
   setup_cargo_bundle_licenses:
     name: setup-cargo-bundle-licenses [default]

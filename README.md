@@ -33,8 +33,7 @@ steps:
 
 ## setup-mdbook
 
-`setup-mdbook` installs [mdbook] and *optionally* installs mdbook plugins:
-* [mdbook-linkcheck]
+`setup-mdbook` installs [mdbook].
 
 In your action workflow:
 ```yaml
@@ -46,7 +45,6 @@ steps:
 See [setup-mdbook/action.yaml] for all options.
 
 [mdbook]: https://rust-lang.github.io/mdBook/
-[mdbook-linkcheck]: https://github.com/Michael-F-Bryan/mdbook-linkcheck
 [setup-mdbook/action.yaml]: setup-mdbook/action.yaml
 
 ## setup-cargo-bundle-licenses
@@ -124,4 +122,3 @@ To automatically update conda lock files monthly:
       with:
         branch: <name of default branch>
   ```
-

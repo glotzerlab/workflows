@@ -20,19 +20,19 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
     - name: Checkout
-      uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+      uses: actions/checkout@d632683dd7b4114ad314bca15554477dd762a938 # v4.2.0
       with:
         path: code
         ref: ${{ inputs.branch }}
 
-    - uses: actions/create-github-app-token@c8f55efbd427e7465d6da1106e7979bc8aaee856 # v1.10.1
+    - uses: actions/create-github-app-token@5d869da34e18e7287c1daad50e0b8ea0f506ce69 # v1.11.0
       id: generate-token
       with:
         app-id: ${{ secrets.PR_SUBMITTER_APP_ID }}
         private-key: ${{ secrets.PR_SUBMITTER_PRIVATE_KEY }}
 
     - name: Create python environment
-      uses: mamba-org/setup-micromamba@f8b8a1e23a26f60a44c853292711bacfd3eac822 # v1.9.0
+      uses: mamba-org/setup-micromamba@617811f69075e3fd3ae68ca64220ad065877f246 # v2.0.0
       with:
         micromamba-version: '1.5.8-0'
         environment-name: update
@@ -50,7 +50,7 @@ jobs:
       working-directory: code/${{ inputs.path }}
 
     - name: Create pull request
-      uses: peter-evans/create-pull-request@c5a7806660adbe173f04e3e038b0ccdcd758773c # v6.1.0
+      uses: peter-evans/create-pull-request@5e914681df9dc83aa4e4905692ca88beb2f9e91f # v7.0.5
       with:
         base: ${{ inputs.branch }}
         path: code

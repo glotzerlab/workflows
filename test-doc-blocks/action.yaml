@@ -1,0 +1,29 @@
+name: Test doc blocks
+description: Test python code in markdown code blocks
+
+inputs:
+  testpath:
+    description: 'test folder'
+    required: false
+    default: 'tests'
+
+runs:
+  using: "composite"
+  steps:
+  - name: Extract code blocks
+    run: |
+      for f in $(find . -not -path '*/.*' -type f -name "*.md"); do
+        echo "Finding blocks in file" $f;
+
+        # Split files into ```python```-delimited chunks.
+        # Then, write each chunk to a file in the tests folder, where the test name
+        # contains the filename of the source markdown and the actual data is indented
+        # and wrapped in a function test_block() so pytest recognizes it
+        awk '/```python/ {file="${{ inputs.testpath }}/test_" FILENAME "_block_" ++count ".py"; print "def test_block():" > file; next} /```/ {file=""} file {print "\t" $0 > file}' "${f#./}"
+      done
+
+    shell: bash
+
+  - name: Test with pytest
+    run: python -m pytest -x ${{ inputs.testpath }}/test*block_*.py
+    shell: bash

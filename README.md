@@ -24,7 +24,7 @@ steps:
   with:
     python-version: "3.12"
 - name: Set up Python environment
-  uses: glotzerlab/workflows/setup-uv@0d90feacda686e08bfecc451fc04a8596bd295f5 # 0.4.0
+  uses: glotzerlab/workflows/setup-uv@e130dd2814c7db5635babe4427dedcbd5aab76d4 # 0.5.0
   with:
     lockfile: "requirements.txt"
 ```
@@ -39,7 +39,7 @@ In your action workflow:
 ```yaml
 steps:
 - name: Set up mdbook
-  uses: glotzerlab/workflows/setup-mdbook@0d90feacda686e08bfecc451fc04a8596bd295f5 # 0.4.0
+  uses: glotzerlab/workflows/setup-mdbook@e130dd2814c7db5635babe4427dedcbd5aab76d4 # 0.5.0
 ```
 
 See [setup-mdbook/action.yaml] for all options.
@@ -55,7 +55,7 @@ In your action workflow:
 ```yaml
 steps:
 - name: Set up mdbook
-  uses: glotzerlab/workflows/setup-cargo-bundle-licenses@0d90feacda686e08bfecc451fc04a8596bd295f5 # 0.4.0
+  uses: glotzerlab/workflows/setup-cargo-bundle-licenses@e130dd2814c7db5635babe4427dedcbd5aab76d4 # 0.5.0
 ```
 
 See [setup-cargo-bundle-licenses/action.yaml] for all options.
@@ -71,7 +71,7 @@ In your action workflow:
 ```yaml
 steps:
 - name: Set up row
-  uses: glotzerlab/workflows/setup-row@0d90feacda686e08bfecc451fc04a8596bd295f5 # 0.4.0
+  uses: glotzerlab/workflows/setup-row@e130dd2814c7db5635babe4427dedcbd5aab76d4 # 0.5.0
 ```
 
 See [setup-row/action.yaml] for all options.
@@ -94,7 +94,7 @@ on:
 
 jobs:
   stale:
-    uses: glotzerlab/workflows/.github/workflows/stale.yaml@0d90feacda686e08bfecc451fc04a8596bd295f5 # 0.4.0
+    uses: glotzerlab/workflows/.github/workflows/stale.yaml@e130dd2814c7db5635babe4427dedcbd5aab76d4 # 0.5.0
 ```
 
 ## update-conda-lockfiles
@@ -117,7 +117,7 @@ To automatically update conda lock files monthly:
 
   jobs:
     update:
-      uses: glotzerlab/workflows/.github/workflows/update-conda-lockfiles.yaml@0d90feacda686e08bfecc451fc04a8596bd295f5 # 0.4.0
+      uses: glotzerlab/workflows/.github/workflows/update-conda-lockfiles.yaml@e130dd2814c7db5635babe4427dedcbd5aab76d4 # 0.5.0
       secrets: inherit
       with:
         branch: <name of default branch>
@@ -143,7 +143,7 @@ To automatically update uv lock files monthly:
 
   jobs:
     update:
-      uses: glotzerlab/workflows/.github/workflows/update-uv-lockfiles.yaml@0d90feacda686e08bfecc451fc04a8596bd295f5 # 0.4.0
+      uses: glotzerlab/workflows/.github/workflows/update-uv-lockfiles.yaml@e130dd2814c7db5635babe4427dedcbd5aab76d4 # 0.5.0
       secrets: inherit
       with:
         branch: <name of default branch>

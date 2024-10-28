@@ -122,3 +122,29 @@ To automatically update conda lock files monthly:
       with:
         branch: <name of default branch>
   ```
+
+## update-uv-lockfiles
+
+To automatically update uv lock files monthly:
+1. Prepare a directory with the base `requirements-*.in` files and a script that updates
+   all lock files (see
+   https://github.com/glotzerlab/rowan/tree/master/.github/workflows for an example).
+2. Ask an organization admin to install the pull request submitter bot.
+3. Create a workflow `update-uv-lockfiles.yaml` with the contents:
+
+  ```yaml
+  name: Update uv lockfiles
+
+  on:
+    schedule:
+      - cron: '0 12 1 * *'
+
+    workflow_dispatch:
+
+  jobs:
+    update:
+      uses: glotzerlab/workflows/.github/workflows/update-uv-lockfiles.yaml@0d90feacda686e08bfecc451fc04a8596bd295f5 # 0.4.0
+      secrets: inherit
+      with:
+        branch: <name of default branch>
+  ```

@@ -11,6 +11,12 @@ on:
     - trunk
 
 jobs:
+  debug:
+    name: Show debugging information
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo '${{ toJSON(github) }}'
+
   setup_uv_default:
     name: setup-uv [default]
     runs-on: ubuntu-latest

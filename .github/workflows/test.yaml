@@ -103,6 +103,14 @@ jobs:
       branch: ${{ github.event.pull_request.head.ref }}
       path: test/update-conda-lockfile
 
+  update_uv_lockfiles:
+    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.ref != 'update-uv-lockfiles' && contains(github.event.pull_request.labels.*.name, 'test-uv-lockfiles') }}
+    uses: ./.github/workflows/update-uv-lockfiles.yaml
+    secrets: inherit
+    with:
+      branch: ${{ github.event.pull_request.head.ref }}
+      path: test/update-uv-lockfile
+
   setup_row:
     name: setup-row [default]
     runs-on: ubuntu-latest

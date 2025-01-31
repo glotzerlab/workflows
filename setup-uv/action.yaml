@@ -5,7 +5,7 @@ inputs:
   version:
     description: 'uv version to install.'
     required: false
-    default: '0.4.18'
+    default: '0.5.26'
   lockfile:
     description: 'Packages to install.'
     required: false
@@ -18,11 +18,12 @@ inputs:
 runs:
   using: "composite"
   steps:
-  - name: Install uv
-    run: curl --proto '=https' --tlsv1.2 -LsSf https://github.com/astral-sh/uv/releases/download/${{ inputs.version }}/uv-installer.sh | bash
-    shell: bash
+  - name: Setup uv
+    uses: astral-sh/setup-uv@4db96194c378173c656ce18a155ffc14a9fc4355 # v5.2.2
+    with:
+      version: ${{ inputs.version }}  
 
-  - name: Install
+  - name: Install packages
     if: ${{ inputs.lockfile != '' }}
     run: "uv pip sync ${{ inputs.lockfile }} --only-binary=${{ inputs.only-binary }} --system --reinstall"
     shell: bash

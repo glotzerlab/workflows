@@ -38,7 +38,7 @@ jobs:
     - name: Set up Python environment
       uses: ./setup-uv
       with:
-        version: 0.2.2
+        version: 0.4.0
     - run: uv --version
 
   setup_uv_lockfile:

@@ -17,10 +17,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-    - name: Set up Python
-      uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 # v5.4.0
-      with:
-        python-version: "3.12"
     - name: Set up Python environment
       uses: ./setup-uv
     - run: uv --version
@@ -32,13 +28,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
     - name: Set up Python
-      uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 # v5.4.0
-      with:
-        python-version: "3.12"
     - name: Set up Python environment
       uses: ./setup-uv
       with:
         version: 0.4.0
+        python-version: "3.12"
     - run: uv --version
 
   setup_uv_lockfile:
@@ -47,14 +41,11 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-    - name: Set up Python
-      uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 # v5.4.0
-      with:
-        python-version: "3.12"
     - name: Set up Python environment
       uses: ./setup-uv
       with:
         lockfile: .github/workflows/lockfile.txt
+        python-version: "3.12"
     - run: uv --version
     - run: python -m build --version
 
@@ -64,15 +55,12 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-    - name: Set up Python
-      uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 # v5.4.0
-      with:
-        python-version: "3.12"
     - name: Set up Python environment
       uses: ./setup-uv
       with:
         lockfile: .github/workflows/lockfile.txt
         only-binary: ":none:"
+        python-version: "3.12"
     - run: uv --version
     - run: python -m build --version
 

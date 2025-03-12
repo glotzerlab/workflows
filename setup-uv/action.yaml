@@ -6,6 +6,10 @@ inputs:
     description: 'uv version to install.'
     required: false
     default: '0.5.26'
+  python-version:
+    description: 'Python version to install.'
+    required: false
+    default: ''
   lockfile:
     description: 'Packages to install.'
     required: false
@@ -21,7 +25,8 @@ runs:
   - name: Setup uv
     uses: astral-sh/setup-uv@4db96194c378173c656ce18a155ffc14a9fc4355 # v5.2.2
     with:
-      version: ${{ inputs.version }}  
+      version: ${{ inputs.version }}
+      python-version: ${{ inputs.python-version }}
 
   - name: Install packages
     if: ${{ inputs.lockfile != '' }}

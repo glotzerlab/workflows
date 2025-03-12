@@ -27,6 +27,7 @@ runs:
     with:
       version: ${{ inputs.version }}
       python-version: ${{ inputs.python-version }}
+      enable-cache: false
 
   - name: Install packages
     if: ${{ inputs.lockfile != '' }}

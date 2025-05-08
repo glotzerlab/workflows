@@ -111,7 +111,7 @@ To automatically update conda lock files monthly:
 
   on:
     schedule:
-      - cron: '0 12 1 * *'
+      - cron: '9 12 1-7 3,6,2,12 4'
 
     workflow_dispatch:
 
@@ -137,7 +137,7 @@ To automatically update uv lock files monthly:
 
   on:
     schedule:
-      - cron: '0 12 1 * *'
+      - cron: '9 12 1-7 3,6,2,12 4'
 
     workflow_dispatch:
 

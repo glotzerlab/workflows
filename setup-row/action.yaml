@@ -9,7 +9,7 @@ inputs:
   platform:
     description: 'Download executables for the given platform.'
     required: false
-    default: x86_64-unknown-linux-gnu
+    default: x86_64-unknown-linux-musl
 
 runs:
   using: "composite"

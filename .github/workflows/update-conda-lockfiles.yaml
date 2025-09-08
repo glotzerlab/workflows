@@ -25,7 +25,7 @@ jobs:
         path: code
         ref: ${{ inputs.branch }}
 
-    - uses: actions/create-github-app-token@3ff1caaa28b64c9cc276ce0a02e2ff584f3900c5 # v2.0.2
+    - uses: actions/create-github-app-token@a8d616148505b5069dccd32f177bb87d7f39123b # v2.1.1
       id: generate-token
       with:
         app-id: ${{ secrets.PR_SUBMITTER_APP_ID }}

@@ -96,22 +96,6 @@ jobs:
       uses: ./setup-cargo-bundle-licenses
     - run: cargo bundle-licenses --version
 
-  update_conda_lockfiles:
-    if: ${{ github.event_name == 'pull_request' && github.head_ref != 'update-conda-lockfiles' && contains(github.event.pull_request.labels.*.name, 'test-conda-lockfiles') }}
-    uses: ./.github/workflows/update-conda-lockfiles.yaml
-    secrets: inherit
-    with:
-      branch: ${{ github.head_ref }}
-      path: test/update-conda-lockfile
-
-  update_uv_lockfiles:
-    if: ${{ github.event_name == 'pull_request' && github.head_ref != 'update-uv-lockfiles' && contains(github.event.pull_request.labels.*.name, 'test-uv-lockfiles') }}
-    uses: ./.github/workflows/update-uv-lockfiles.yaml
-    secrets: inherit
-    with:
-      branch: ${{ github.head_ref }}
-      path: test/update-uv-lockfile
-
   setup_row:
     name: setup-row [default]
     runs-on: ubuntu-latest

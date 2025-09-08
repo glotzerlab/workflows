@@ -10,26 +10,29 @@ use across glotzerlab software packages.
 
 To generate a lockfile, run:
 ```bash
-uv pip compile --python-version 3.12 --python-platform linux requirements.in > requirements.txt
+uv pip compile --python-version=3.13 requirements.in --output-file=requirements.txt
 ```
 and add both `requirements.in` and `requirements.txt` to the git repository.
+
+[Renovate] can keep the `requirements.txt` up to date.
 
 In your action workflow, create a Python environment and then call setup-uv:
 ```yaml
 steps:
 - name: Checkout
-  uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+  uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
 - name: Set up Python
-  uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
+  uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c # v6.0.0
   with:
-    python-version: "3.12"
+    python-version: "3.13"
 - name: Set up Python environment
-  uses: glotzerlab/workflows/setup-uv@1747bc5c994ec280440dd051f2928791407692c8 # 0.5.1
+  uses: glotzerlab/workflows/setup-uv@1855eec25e87bdbc06359aa3adc355b59272cae3 # 0.7.0
   with:
     lockfile: "requirements.txt"
 ```
 
 [uv]: https://github.com/astral-sh/uv
+[Renovate]: https://docs.renovatebot.com
 
 ## setup-mdbook
 
@@ -39,7 +42,7 @@ In your action workflow:
 ```yaml
 steps:
 - name: Set up mdbook
-  uses: glotzerlab/workflows/setup-mdbook@1747bc5c994ec280440dd051f2928791407692c8 # 0.5.1
+  uses: glotzerlab/workflows/setup-mdbook@1855eec25e87bdbc06359aa3adc355b59272cae3 # 0.7.0
 ```
 
 See [setup-mdbook/action.yaml] for all options.
@@ -54,8 +57,8 @@ See [setup-mdbook/action.yaml] for all options.
 In your action workflow:
 ```yaml
 steps:
-- name: Set up mdbook
-  uses: glotzerlab/workflows/setup-cargo-bundle-licenses@1747bc5c994ec280440dd051f2928791407692c8 # 0.5.1
+- name: Set up cargo-bundle-licenses
+  uses: glotzerlab/workflows/setup-cargo-bundle-licenses@1855eec25e87bdbc06359aa3adc355b59272cae3 # 0.7.0
 ```
 
 See [setup-cargo-bundle-licenses/action.yaml] for all options.
@@ -71,7 +74,7 @@ In your action workflow:
 ```yaml
 steps:
 - name: Set up row
-  uses: glotzerlab/workflows/setup-row@1747bc5c994ec280440dd051f2928791407692c8 # 0.5.1
+  uses: glotzerlab/workflows/setup-row@1855eec25e87bdbc06359aa3adc355b59272cae3 # 0.7.0
 ```
 
 See [setup-row/action.yaml] for all options.
@@ -99,52 +102,10 @@ jobs:
 
 ## update-conda-lockfiles
 
-To automatically update conda lock files monthly:
-1. Prepare a directory with the base `environment.yaml` and a script that updates all
-  lock files (see https://github.com/glotzerlab/hoomd-blue/tree/trunk-minor/.github/workflows/environments
-  for an example).
-2. Ask an organization admin to install the pull request submitter bot.
-3. Create a workflow `update-conda-lockfiles.yaml` with the contents:
+`update-conda-lockfiles` is no longer maintained. Use [Pixi] and [Renovate] instead.
 
-  ```yaml
-  name: Update conda lockfiles
-
-  on:
-    schedule:
-      - cron: '9 12 */100,1-7 3,6,2,12 4'
-
-    workflow_dispatch:
-
-  jobs:
-    update:
-      uses: glotzerlab/workflows/.github/workflows/update-conda-lockfiles.yaml@1747bc5c994ec280440dd051f2928791407692c8 # 0.5.1
-      secrets: inherit
-      with:
-        branch: <name of default branch>
-  ```
+[Pixi]: https://pixi.sh
 
 ## update-uv-lockfiles
 
-To automatically update uv lock files monthly:
-1. Prepare a directory with the base `requirements-*.in` files and a script that updates
-   all lock files (see
-   https://github.com/glotzerlab/rowan/tree/master/.github/workflows for an example).
-2. Ask an organization admin to install the pull request submitter bot.
-3. Create a workflow `update-uv-lockfiles.yaml` with the contents:
-
-  ```yaml
-  name: Update uv lockfiles
-
-  on:
-    schedule:
-      - cron: '9 12 */100,1-7 3,6,2,12 4'
-
-    workflow_dispatch:
-
-  jobs:
-    update:
-      uses: glotzerlab/workflows/.github/workflows/update-uv-lockfiles.yaml@1747bc5c994ec280440dd051f2928791407692c8 # 0.5.1
-      secrets: inherit
-      with:
-        branch: <name of default branch>
-  ```
+`update-uv-lockfiles` is no longer maintained. Use [Renovate] instead.

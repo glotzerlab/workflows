@@ -23,7 +23,7 @@ jobs:
     name: Validate style
     if: always()
     needs: [prek]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
     - run: jq --exit-status 'all(.result == "success")' <<< '${{ toJson(needs) }}'

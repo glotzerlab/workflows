@@ -17,3 +17,15 @@ jobs:
       uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
     - name: Prek
       uses: ./prek
+
+  # This job is used to provide a single requirement for branch merge conditions.
+  tests_complete:
+    name: Validate style
+    if: always()
+    needs: [prek]
+    runs-on: ubuntu-latest
+
+    steps:
+    - run: jq --exit-status 'all(.result == "success")' <<< '${{ toJson(needs) }}'
+    - name: Done
+      run: exit 0

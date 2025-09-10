@@ -15,7 +15,7 @@ steps:
   with:
     path: code
 - name: prek
-  uses: glotzerlab/workflows/prek@1855eec25e87bdbc06359aa3adc355b59272cae3 # 0.7.0
+  uses: glotzerlab/workflows/prek@1fe577d5430222a9793694a14cdb316cf8f720e1 # 0.9.0
   with:
     path: code
 ```
@@ -45,7 +45,7 @@ steps:
   with:
     python-version: "3.13"
 - name: Set up Python environment
-  uses: glotzerlab/workflows/setup-uv@1855eec25e87bdbc06359aa3adc355b59272cae3 # 0.7.0
+  uses: glotzerlab/workflows/setup-uv@1fe577d5430222a9793694a14cdb316cf8f720e1 # 0.9.0
   with:
     lockfile: "requirements.txt"
 ```
@@ -61,7 +61,7 @@ In your action workflow:
 ```yaml
 steps:
 - name: Set up mdbook
-  uses: glotzerlab/workflows/setup-mdbook@1855eec25e87bdbc06359aa3adc355b59272cae3 # 0.7.0
+  uses: glotzerlab/workflows/setup-mdbook@1fe577d5430222a9793694a14cdb316cf8f720e1 # 0.9.0
 ```
 
 See [setup-mdbook/action.yaml] for all options.
@@ -77,7 +77,7 @@ In your action workflow:
 ```yaml
 steps:
 - name: Set up cargo-bundle-licenses
-  uses: glotzerlab/workflows/setup-cargo-bundle-licenses@1855eec25e87bdbc06359aa3adc355b59272cae3 # 0.7.0
+  uses: glotzerlab/workflows/setup-cargo-bundle-licenses@1fe577d5430222a9793694a14cdb316cf8f720e1 # 0.9.0
 ```
 
 See [setup-cargo-bundle-licenses/action.yaml] for all options.
@@ -93,7 +93,7 @@ In your action workflow:
 ```yaml
 steps:
 - name: Set up row
-  uses: glotzerlab/workflows/setup-row@1855eec25e87bdbc06359aa3adc355b59272cae3 # 0.7.0
+  uses: glotzerlab/workflows/setup-row@1fe577d5430222a9793694a14cdb316cf8f720e1 # 0.9.0
 ```
 
 See [setup-row/action.yaml] for all options.
@@ -116,7 +116,7 @@ on:
 
 jobs:
   stale:
-    uses: glotzerlab/workflows/.github/workflows/stale.yaml@1747bc5c994ec280440dd051f2928791407692c8 # 0.5.1
+    uses: glotzerlab/workflows/.github/workflows/stale.yaml@1fe577d5430222a9793694a14cdb316cf8f720e1 # 0.9.0
 ```
 
 ## update-conda-lockfiles

@@ -20,7 +20,7 @@ jobs:
 
   # This job is used to provide a single requirement for branch merge conditions.
   tests_complete:
-    name: Style
+    name: All
     if: always()
     needs: [prek]
     runs-on: ubuntu-24.04

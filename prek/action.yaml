@@ -22,7 +22,7 @@ runs:
     run: |
       : Install prek
       mkdir -p "$HOME/.cargo/bin"
-      curl -sSL "https://github.com/j178/prek/releases/download/v${{ inputs.version }}/prek-${{ inputs.platform }}.tar.gz" | tar -xvz --strip-components=1 --directory "$HOME/.cargo/bin"
+      curl -sSL "https://github.com/j178/prek/releases/download/v${{ inputs.version }}/prek-${{ inputs.platform }}.tar.gz" | tar -xz --strip-components=1 --directory "$HOME/.cargo/bin"
       echo "PREK_COLOR=always" >> "$GITHUB_ENV"
     shell: bash
   - run: prek run --all-files --show-diff-on-failure --verbose

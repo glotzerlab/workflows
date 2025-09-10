@@ -3,6 +3,25 @@
 `glotzerlab/workflows` houses reusable GitHub actions and workflows that are in common
 use across glotzerlab software packages.
 
+## prek
+
+`prek` installs [prek] and executes `prek run --all-files`.
+
+In your action workflow, use the `prek` composite action:
+```yaml
+steps:
+- name: Checkout
+  uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+  with:
+    path: code
+- name: Prek
+  uses: glotzerlab/workflows/prek@1855eec25e87bdbc06359aa3adc355b59272cae3 # 0.7.0
+  with:
+    path: code
+```
+
+[prek]: https://prek.j178.dev/
+
 ## setup-uv
 
 `setup-uv` installs [uv] and *optionally* installs all the packages in a given

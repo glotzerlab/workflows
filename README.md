@@ -14,7 +14,7 @@ steps:
   uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
   with:
     path: code
-- name: Prek
+- name: prek
   uses: glotzerlab/workflows/prek@1855eec25e87bdbc06359aa3adc355b59272cae3 # 0.7.0
   with:
     path: code

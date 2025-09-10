@@ -1,4 +1,4 @@
-name: Validate
+name: Style
 
 on:
   pull_request:
@@ -20,7 +20,7 @@ jobs:
 
   # This job is used to provide a single requirement for branch merge conditions.
   tests_complete:
-    name: All
+    name: All style checks
     if: always()
     needs: [prek]
     runs-on: ubuntu-24.04

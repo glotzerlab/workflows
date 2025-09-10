@@ -25,4 +25,5 @@ runs:
       echo "PREK_COLOR=always" >> "$GITHUB_ENV"
     shell: bash
   - run: prek run --all-files --show-diff-on-failure --verbose
-    working-directory: ${{ path }}
+    working-directory: ${{ inputs.path }}
+    shell: bash
